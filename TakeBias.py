@@ -83,6 +83,14 @@ ccd_frame[2].value=3360+overscan #Set width of frame readout in px
 ccd_frame[3].value=2584+overscan #Set height of frame readout in px
 indiclient.sendNewNumber(ccd_frame)
 
+#Adds binning
+hBinning=2 #the horizontal binning number
+vBinning=2 #the vertical binning number
+ccd_bin=device_ccd.getNumber("CCD_BINNING")
+ccd_bin[0].value=hBinning
+ccd_bin[1].value=vBinning
+indiclient.sendNewNumber(ccd_bin)
+
 ccd_exposure=device_ccd.getNumber("CCD_EXPOSURE")
 while not(ccd_exposure):
     time.sleep(0.5)
